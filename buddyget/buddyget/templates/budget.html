@@ -1,1 +1,30 @@
 <h3>{{budget.title}}</h3>
+
+<table>
+    <tr>
+        <th style="width: 256px;">Date</th>
+        <th style="width: 256px;">Place</th>
+        <th style="width: 256px;">Cost</th>
+    </tr>
+{% for row in rows %}
+    <tr>
+        <td style="text-align: center;">{{ row.date }}</td>
+        <td style="text-align: center;">{{ row.place }}</td>
+        <td style="text-align: center;">{{ row.cost }}</td>
+    </tr>
+{% endfor %}
+</table>
+<br>
+
+<p><b>SUM:</b> {{ sum }} <b>EACH:</b> {{ each }}</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" min="2022-12-01" max="2023-01-01">
+    <label for="place">Place:</label>
+    <input type="text" id="place" name="place">
+    <label for="cost">Cost:</label>
+    <input type="number" step="any" id="cost" name="cost"/>
+    <button>ADD ROW</button>
+</form>
